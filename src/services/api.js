@@ -4,7 +4,7 @@ import { useAuthStore } from '@/stores/auth';
 export function createAxiosInstance() {
   
   const instance = axios.create({
-    baseURL: 'http://localhost:3000',
+    baseURL: 'https://blog-backend-production-3b74.up.railway.app',
   });
 
   instance.interceptors.request.use(
