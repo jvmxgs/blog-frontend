@@ -18,33 +18,32 @@
 
 </template>
 <script setup>
-import { ref } from 'vue';
-import ToggleButton from '@/components/ToggleButton.vue';
-import GalleryView from './public/GalleryView.vue';
-import ListView from './public/ListView.vue';
-
+  import { ref } from 'vue';
+  import ToggleButton from '@/components/ToggleButton.vue';
+  import GalleryView from './public/GalleryView.vue';
+  import ListView from './public/ListView.vue';
   import PostService from "@/services/PostService"
 
   const posts = ref([])
+  const gridView = ref(true);
 
   PostService.index()
     .then((data) => {
       posts.value = data.data
     })
 
-const gridView = ref(true);
 
-function toggleView(value) {
-  gridView.value = value;
-}
+  function toggleView(value) {
+    gridView.value = value;
+  }
 
 </script>
 <style>
-.fade-enter-active, .fade-leave-active {
-  transition: opacity 0.3s;
-}
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity 0.3s;
+  }
 
-.fade-enter, .fade-leave-to {
-  opacity: 0;
-}
+  .fade-enter, .fade-leave-to {
+    opacity: 0;
+  }
 </style>

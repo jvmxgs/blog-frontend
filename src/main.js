@@ -6,6 +6,7 @@ import App from './App.vue'
 import { createPinia } from 'pinia'
 const pinia = createPinia()
 import router from './router'
+import Notifications from '@kyvg/vue3-notification'
 
 /* import the fontawesome core */
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -23,5 +24,6 @@ createApp(App)
   .use(pinia)
   .use(VueAxios, axios)
   .use(router)
+  .use(Notifications)
   .component('font-awesome-icon', FontAwesomeIcon)
   .mount('#app')

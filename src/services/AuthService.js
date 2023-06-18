@@ -5,11 +5,8 @@ const api = createAxiosInstance()
 export default {
   login: async (value) => {
     return await api.post("/api/login", value)
-      .then(function ({data}) {
+      .then(function (data) {
         return data
-      })
-      .catch(function (error) {
-        console.log(error)
       })
   },
 }

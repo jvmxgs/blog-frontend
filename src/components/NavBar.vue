@@ -2,7 +2,6 @@
   import NavBarItem from './NavBarItem.vue';
   import Logout from '@/components/Logout.vue';
   import { useAuthStore } from '@/stores/auth'
-  import { defineProps } from "vue";
 
   const props = defineProps({
     options: Array,

@@ -3,6 +3,7 @@
   import { useRouter } from "vue-router"
   import AuthService from "../services/AuthService"
   import { useAuthStore } from '@/stores/auth'
+  import { notify } from "@kyvg/vue3-notification";
 
   const router = useRouter();
   const authStore = useAuthStore();
@@ -13,16 +14,20 @@
   })
 
   async function login() {
-    try {
-      await AuthService.login(loginData.value)
-        .then((response) => {
-          authStore.saveToken(response.token)
-          authStore.saveUser(response.user)
+    await AuthService.login(loginData.value)
+      .then(({ data }) => {
+        if (data?.token) {
+          authStore.saveToken(data.token)
+          authStore.saveUser(data.user)
           router.push('/admin')
-        })
-    } catch (error) {
-      console.log(error);
-    }
+          return 
+        }
+      })
+      .catch(({ response }) => {
+        notify({
+          title: response.data.message,
+        });
+      })
   }
 </script>
 <template>
