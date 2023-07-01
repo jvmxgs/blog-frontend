@@ -21,6 +21,7 @@
     "prismjs": "^1.29.0",
     "vue": "^3.2.47",
     "vue-axios": "^3.5.2",
+    "vue-gtag-next": "^1.14.0",
     "vue-router": "^4.2.1"
   },
   "devDependencies": {

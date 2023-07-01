@@ -1,30 +1,19 @@
 <script setup>
-  import { ref, computed } from "vue"
+  import { ref, onMounted } from "vue"
   import PostService from "@/services/PostService"
-  import { useRoute } from 'vue-router'
+  import { routerKey, useRoute, useRouter } from 'vue-router'
   import Prism from "prismjs";
   import "prismjs/themes/prism.css";
 
   const route = useRoute()
-  const post = ref([])
-  let tags = ''
+  const post = route.params.post
+  let tags = post.tags.map(s => '#' + s).join(' ')
 
-
-  const urlParts = route.path.split('/');
-
-  PostService.show(urlParts[2])
-    .then((data) => {
-      post.value = data.data
-      tags = post.value.tags.map(s => '#' + s).join(' ')
-    })
-    .finally(() => {
-      window.Prism = window.Prism || {};
-      window.Prism.manual = true;
-      Prism.highlightAll();
-    })
-    .catch((error) => {
-      console.error(error)
-    });
+  onMounted(() => {
+    window.Prism = window.Prism || {};
+    window.Prism.manual = true;
+    Prism.highlightAll();
+  })
 </script>
 <template>
   <article>

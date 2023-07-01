@@ -10,7 +10,7 @@
           </div>
         </div>
         <p class="mt-2 text-gray-700">{{ post.content.substring(0, 60) }}</p>
-        <router-link :to="'/posts/' + post.id" class="mt-4 inline-block text-blue-600 hover:underline">Read More</router-link>
+        <router-link :to="'/posts/' + post.slug" class="mt-4 inline-block text-blue-600 hover:underline">Read More</router-link>
       </li>
     </ul>
   </div>

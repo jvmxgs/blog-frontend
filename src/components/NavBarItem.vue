@@ -5,8 +5,8 @@
   })
 </script>
 <template>
-  <li class="inline-block text-gray-600 no-underline hover:text-gray-900 hover:text-underline font-albert-sans text-md">
-    <router-link :to="link" class="text-link-water hover:text-white text-lg">[ {{ title }} ]</router-link>
+  <li class="inline-block no-underline hover:text-gray-900 hover:text-underline font-albert-sans text-md">
+    <router-link :to="link" class="text-ghost-white hover:text-white text-lg">[ {{ title }} ]</router-link>
   </li>
 </template>
 <style scoped>

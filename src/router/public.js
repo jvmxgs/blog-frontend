@@ -1,6 +1,7 @@
 import Blog from '../layouts/BlogBlue/Blog.vue'
 import Home from '../views/Home.vue'
 import Post from '../views/public/Post.vue'
+import PostService from "@/services/PostService"
 
 export default {
   path: "/",
@@ -16,7 +17,22 @@ export default {
     {
       path: 'posts/:slug',
       component: Post,
-      name: "Post"
+      name: "Post",
+      beforeEnter: (to, from, next) => {
+        const urlParts = to.path.split('/');
+        PostService.show(urlParts[2])
+          .then(({ data }) => {
+            to.params.post = data;
+            next();
+          })
+          .catch((error) => {
+            if (error.response?.request?.status == 404) {
+              next({ name: 'NotFound' });
+            }
+
+            console.error(error)
+          });
+      },
     },
   ]
 }

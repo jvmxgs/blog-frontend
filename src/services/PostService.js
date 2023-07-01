@@ -17,8 +17,5 @@ export default {
       .then(function ({data}) {
         return data
       })
-      .catch(function (error) {
-        console.log(error)
-      })
   },
 }
