@@ -15,6 +15,9 @@ export default {
       path: '',
       component: Dashboard,
       name: "Dashboard",
+      meta: {
+        title: 'Dashboard'
+      },
     },
     {
       path: 'posts',
@@ -24,17 +27,26 @@ export default {
         {
           path: '',
           component: PostList,
-          name: "PostsList"
+          name: "PostsList",
+          meta: {
+            title: 'Posts'
+          },
         },
         {
           path: 'new',
           component: PostsNew,
-          name: "PostsNew"
+          name: "PostsNew",
+          meta: {
+            title: 'New post'
+          },
         },
         {
           path: ':id/edit',
           component: PostsEdit,
-          name: "PostsEdit"
+          name: "PostsEdit",
+          meta: {
+            title: 'Edit Post'
+          },
         },
       ]
     }

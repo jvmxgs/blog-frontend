@@ -7,12 +7,17 @@ export default {
   path: "/",
   name: "/",
   component: Blog,
-  meta: { requiresAuth: false },
+  meta: {
+    requiresAuth: false,
+  },
   children: [
     {
       path: '',
       component: Home,
-      name: "Home"
+      name: "Home",
+      meta: {
+        title: "Home",
+      },
     },
     {
       path: 'posts/:slug',
@@ -22,7 +27,8 @@ export default {
         const urlParts = to.path.split('/');
         PostService.show(urlParts[2])
           .then(({ data }) => {
-            to.params.post = data;
+            to.params.post = data
+            document.title = data.title + ' - ' + import.meta.env.VITE_APP_TITLE
             next();
           })
           .catch((error) => {

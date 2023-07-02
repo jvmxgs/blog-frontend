@@ -42,8 +42,14 @@ router.beforeEach((to, from, next) => {
 
   const authStore = useAuthStore();
 
-  if (to.meta.requiresAuth && (!authStore.user || !authStore.token)) {
+  if (isAdminRoute && (!authStore.user || !authStore.token)) {
     next('/login')
+  }
+
+  document.title = import.meta.env.VITE_APP_TITLE
+
+  if (to.meta.title) {
+    document.title = to.meta.title + ' - ' + import.meta.env.VITE_APP_TITLE
   }
 
   next()
