@@ -11,6 +11,7 @@ import VueGtag from "vue-gtag-next";
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faListSquares, faGrip } from '@fortawesome/free-solid-svg-icons'
+import { createHead } from "@vueuse/head"
 
 library.add(faListSquares, faGrip)
 
@@ -25,4 +26,5 @@ createApp(App)
       id: import.meta.env.VITE_GTAG_ID
     }
   })
+  .use(createHead())
   .mount('#app')

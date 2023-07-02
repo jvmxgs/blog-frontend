@@ -1,9 +1,9 @@
 <script setup>
-  import { ref, onMounted } from "vue"
-  import PostService from "@/services/PostService"
-  import { routerKey, useRoute, useRouter } from 'vue-router'
+  import { onMounted } from "vue"
+  import { useRoute } from 'vue-router'
   import Prism from "prismjs";
   import "prismjs/themes/prism.css";
+  import { useHead } from "@vueuse/head"
 
   const route = useRoute()
   const post = route.params.post
@@ -14,6 +14,16 @@
     window.Prism.manual = true;
     Prism.highlightAll();
   })
+
+  useHead({
+    link: [
+      {
+        rel: 'canonical',
+        href: location.protocol + '//' + location.host + '/posts/' + post.slug,
+      },
+    ],
+  })
+
 </script>
 <template>
   <article>
