@@ -11,7 +11,7 @@
 </script>
 <template>
   <nav class="flex justify-center items-center bg-east-bay rounded-b-md px-4 h-12">
-    <span class="w-60">[ Vicode ]</span>
+    <span class="w-60 text-ghost-white">[ Victor Gomez Blog ]</span>
     <ul class="flex justify-end gap-x-4 w-full">
       <NavBarItem v-for="option in options" :key="option.link" :title="option.title" :link="option.link" />
       <Logout v-if="authStore.token"></Logout>

@@ -6,11 +6,11 @@
           <img :src="extractThumbnail(post.content)" alt="Post Image" class="w-16 h-16 rounded-full">
           <div>
             <h2 class="text-lg font-semibold">{{ post.title }}</h2>
-            <p class="text-gray-500">{{ post.updated_at }}</p>
+            <p class="text-gray-500">{{ parseDate(post.updated_at) }}</p>
           </div>
         </div>
-        <p class="mt-2 text-gray-700">{{ post.content.substring(0, 60) }}</p>
-        <router-link :to="'/posts/' + post.slug" class="mt-4 inline-block text-blue-600 hover:underline">Read More</router-link>
+        <p class="mt-2 text-gray-700">{{ stripTags(post.content.substring(0, 60)) }}</p>
+        <router-link :to="'/posts/' + post.slug" class="mt-4 inline-block text-east-bay hover:underline">Read More</router-link>
       </li>
     </ul>
   </div>
@@ -26,14 +26,24 @@
 </style>
 <script setup>
 
-const props = defineProps({
-  posts: {
-    type: Array,
-    required: true
-  }
-});
+  const props = defineProps({
+    posts: {
+      type: Array,
+      required: true
+    }
+  });
 
-function extractThumbnail(content) {
+  function parseDate(date) {
+    return new Date(date).toLocaleDateString('en-GB', {
+      day: 'numeric', month: 'short', year: 'numeric'
+    })
+  }
+
+  function stripTags(strCode) {
+    return strCode.replace(/<\/?[^>]+(>|$)/g, "");
+  }
+
+  function extractThumbnail(content) {
     // Extract the thumbnail from the content HTML
     const imgRegex = /<img.*?src="(.*?)".*?>/g
 
