@@ -9,15 +9,13 @@ export default {
   component: Blog,
   meta: {
     requiresAuth: false,
+    title: "Home",
   },
   children: [
     {
       path: '',
       component: Home,
       name: "Home",
-      meta: {
-        title: "Home",
-      },
     },
     {
       path: 'posts/:slug',
@@ -29,6 +27,7 @@ export default {
           .then(({ data }) => {
             to.params.post = data
             document.title = data.title + ' - ' + import.meta.env.VITE_APP_TITLE
+            // to.meta.title = data.title
             next();
           })
           .catch((error) => {

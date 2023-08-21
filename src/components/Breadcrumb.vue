@@ -13,7 +13,7 @@
 
   function mapRoutes(matched) {
     return matched.map((route) => ({
-      label: route.meta && route.meta.breadcrumb ? route.meta.breadcrumb : route.name,
+      label: route.meta.title,
       to: route.path,
     }))
   }

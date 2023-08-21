@@ -4,9 +4,9 @@
 <template>
   <header class="lg:w-[1024px] w-full m-auto">
     <slot name="navbar"></slot>
-    <!-- <section class="bg-white shadow-sm drop-shadow-sm mt-2 px-4 py-2 rounded-md">
+    <section class="bg-white shadow-sm drop-shadow-sm mt-2 px-4 py-2 rounded-md">
       <breadcrumb></breadcrumb>
-    </section> -->
+    </section>
   </header>
   <main class="lg:w-[1024px] w-full m-auto flex bg-white shadow-sm drop-shadow-sm mt-2 p-4 text-sm rounded-md">
     <section class="text-justify lg:m-20 md:m-8 overflow-auto w-full">
